@@ -12,6 +12,7 @@ weight: 60
 title: Recent Posts
 subtitle:
 
+active: false
 content:
   # Page type to display. E.g. post, talk, publication...
   page_type: post
