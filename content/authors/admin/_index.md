@@ -41,6 +41,6 @@ superuser: true
 title: David Terner
 ---
 
-David Terner is a PhD candiate at Indiana University. His main areas of research focus on how maritime freight transport affects patterns of international trade. World Bank consultant engaging with a study on cross-country determinants of freight of costs.  National Science Foundation (NSF) Complex Networks and Systems Affiliate. 
+Economics PhD candiate at Indiana University. Research focus on international trade, transport economics, and applied microeconomics. World Bank and private sector shipping consultancy experience.  National Science Foundation (NSF) Complex Networks and Systems Affiliate. 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/Terner_Resume_09_30_20.pdf" "newtab" >}}CV{{< /staticref >}}.
