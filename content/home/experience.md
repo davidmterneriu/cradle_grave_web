@@ -4,14 +4,14 @@
 widget: experience
 
 
-active: false
+active: true
 # This file represents a page section.
 headless: true
 
 # Order that this section appears on the page.
 weight: 40
 
-title: Experience
+title: Professional Experience
 subtitle:
 
 # Date format for experience
@@ -24,24 +24,29 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-#  - title: CEO
-#    company: GenCoin
-#    company_url: ''
-#    location: California
-#    date_start: '2017-01-01'
-#    date_end: ''
+#  - title: Summer Associate
+#    company: Marsoft Inc
+#    company_url: 'https://www.marsoft.com/'
+#    location: Boston, MA
+#    date_start: '2020-05-26'
+#    date_end: '2020-09-08'
 #    description: |2-
 #        Responsibilities include:
 #        
-#        * Analysing
-#        * Modelling
-#        * Deploying
+#        * Executed independent project to refine forecasting models for spot earnings, time charter rates,
+and vessel valuations by integrating analysis of macroeconomic market fundamentals within
+an adaptive, statistical learning, time series-regression modeling framework.
+#        * Delivered internal presentations to President and senior leaders of project results and forecasting quality review: 
+#           * Evaluated forecast performance against industry benchmarks.
+#        * Created technical documentation and sophisticated training resources for internal analysts.
 #       
-#  - title: Professor
-#    company: University X
-#    company_url: ''
-#    location: California
-#    date_start: '2016-01-01'
-#    date_end: '2016-12-31'
-#    description: Taught electronic engineering and researched semiconductor physics.
+#  - title: Research Associate 
+#    company: Center for Government Research 
+#    company_url: 'https://www.cgr.org/'
+#    location: Rochester, NY
+#    date_start: '2017-06-05'
+#    date_end: '2017-08-04'
+#    description: Provided socioeconomic/ fiscal impact analyses and visualizations for Chautauqua County’s
+Municipal Consolidation and Efficiency Competition (MCEC) application through use of county
+tax, property values, and US Census data.
 ---
