@@ -30,15 +30,10 @@ experience:
 #    location: Boston, MA
 #    date_start: '2020-05-26'
 #    date_end: '2020-09-08'
-#    description: |2-
-#        Responsibilities include:
+#    description: Hello world.
 #        
-#        * Executed independent project to refine forecasting models for spot earnings, time charter rates,
-and vessel valuations by integrating analysis of macroeconomic market fundamentals within
-an adaptive, statistical learning, time series-regression modeling framework.
-#        * Delivered internal presentations to President and senior leaders of project results and forecasting quality review: 
-#           * Evaluated forecast performance against industry benchmarks.
-#        * Created technical documentation and sophisticated training resources for internal analysts.
+#        
+#        
 #       
 #  - title: Research Associate 
 #    company: Center for Government Research 
@@ -46,7 +41,5 @@ an adaptive, statistical learning, time series-regression modeling framework.
 #    location: Rochester, NY
 #    date_start: '2017-06-05'
 #    date_end: '2017-08-04'
-#    description: Provided socioeconomic/ fiscal impact analyses and visualizations for Chautauqua County’s
-Municipal Consolidation and Efficiency Competition (MCEC) application through use of county
-tax, property values, and US Census data.
+#    description: Provided socioeconomic/ fiscal impact analyses and visualizations for Chautauqua 
 ---
