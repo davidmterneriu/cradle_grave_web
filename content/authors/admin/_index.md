@@ -4,7 +4,7 @@ education:
   courses:
   - course: PhD in Economics
     institution: Indiana University
-    year: Present
+    year: 2022 (Expected)
   - course: MA in Economics
     institution: Indiana University
     year: 2018
@@ -24,7 +24,7 @@ interests:
 organizations:
 - name: Indiana University 
   url: https://economics.indiana.edu/
-role: Associate Instructor
+role: PhD Candidate
 social:
 - icon: envelope
   icon_pack: fas
@@ -41,6 +41,6 @@ superuser: true
 title: David Terner
 ---
 
-Economics PhD candiate at Indiana University. Research focus on international trade, transport economics, and applied microeconomics. World Bank and private sector shipping consultancy experience.  National Science Foundation (NSF) Complex Networks and Systems Affiliate. 
+Economics PhD candidate at Indiana University. Research focus on international trade, transport economics, and applied microeconomics. World Bank and private sector shipping consultancy experience.  National Science Foundation (NSF) Complex Networks and Systems Affiliate. 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/Terner_Resume_09_30_20.pdf" "newtab" >}}CV{{< /staticref >}}.
