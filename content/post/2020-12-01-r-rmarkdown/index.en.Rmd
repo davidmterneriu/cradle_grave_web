@@ -186,7 +186,12 @@ mod3=felm(data=Movie_merge_s,gross_usa_r~budget_r+aca_nom+imdb_score+aca_nom|Gen
 
 This last section here attempts to tease out some kind of relationship between RT review scores and box office performance. In particular, I estimate the following model: 
 
-$$G_{i,t}=\beta_0+\beta_1 Budget_{i,t}+ \beta_2 Academy_{i,t}+\beta_3 Rating_{i,t}+\theta_t+\gamma_i+\varepsilon_{i,t}$$
+$$
+\begin{aligned}
+G_{i,t}=&\beta_0+\beta_1 Budget_{i,t}+ \beta_2 Academy_{i,t}+\beta_3 Rating_{i,t}\\
++&\theta_t+\gamma_i+\varepsilon_{i,t}
+\end{aligned}
+$$
 where the dependent variable is $G_{i,t}$ is the US box office real gross (mil 2020 USD) for film  $i$ made at time $t$, and independent variables include: $Budget_{i,t}$ is the film's real (mil 2020 USD) budget, $Academy_{i,t}$ is a dummy variable that codes for whether a film was nominated for an Academy Award, $\theta_t$ and $\gamma_i$ capture time and genre fixed effects, and $Rating_{i,t}$ is the variable of interest. In Model (1), I use Critics's review scores for $Rating_{i,t},$ whereas I use Audience review scores and (pooled) IMBd scores for $Rating_{i,t}$ in Model (2) and Model (3), respectively. 
 
 
