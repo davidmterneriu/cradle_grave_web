@@ -1,37 +1,128 @@
 ---
-title: "Hello R Markdown"
-author: "Frida Gomam"
-date: 2020-12-01T21:13:14-05:00
+title: "Are we watching the same movie? Diverging tastes among Rotten Tomatoes reviews"
+author: "David Terner"
+date: 2021-02-26
 categories: ["R"]
-tags: ["R Markdown", "plot", "regression"]
+#tags: ["R Markdown", "plot", "regression"]
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
+warn = getOption("warn")
+options(warn=-1)
 ```
 
-# R Markdown
+# First post thoughts
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Throughout the year, I come across interesting datasets that are ripe for story telling but that are without an obvious research dimension/question. This portion of the website is dedicated to sharing the first inklings that come to mind after sorting through and trying to glean a pattern (or two) from the data. 
 
-You can embed an R code chunk like this:
+# You say tomato, I say tomato?
 
-```{r cars}
-summary(cars)
-fit <- lm(dist ~ speed, data = cars)
-fit
+[Hillbilly Elegy](https://www.harpercollins.com/products/hillbilly-elegy-j-d-vance?variant=32207704391714) is a highly readable, personal memoir detailing author [J.D. Vance](https://en.wikipedia.org/wiki/J._D._Vance)'s journey from/through a Appalachian (broken) community on to Yale Law School. The book was initially held in wide esteem, particularly among *The Atlantic* devotees, for providing a glimpse into the often inscrutable (to outsiders) class of voters who helped to elect Donald Trump. In response to the book's appeal and commercial success (*New York Times* Best Seller List 2016-2017), director [Ron Howard](https://www.rollingstone.com/movies/movie-news/ron-howard-to-direct-produce-hillbilly-elegy-movie-123741/) partnered with Netflix to adapt J.D.'s story for a full length motion picture. Given the source material, the choice of director, the talents of [Amy Adams](https://en.wikipedia.org/wiki/Amy_Adams) and [Glenn Close ](https://en.wikipedia.org/wiki/Glenn_Close), and a musical score by [Hans Zimmer](https://filmmusicreporter.com/2020/03/10/hans-zimmer-to-reteam-with-ron-howard-on-hillbilly-elegy/), the film appeared poised for future success. 
+
+It was not to be. Well, defining <u>success</u> for which <u>kind</u> of audience is a matter of keen interest, and Rotten Tomatoes helps us get at measurement questions.  
+
+
+[Rotten Tomatoes](https://www.rottentomatoes.com/) (RT hereafter) is review-aggregation website where users can rate and review both movies and television shows. RT reviewers fall into two camps: critics and (general) audience. "Critics" typically belong to: writing guilds, film critic associations, and/or major newspapers whereas "Audience" reviews come from any/all RT users with an RT account. 
+
+RT's [reviews](https://www.rottentomatoes.com/m/hillbilly_elegy) of Hillbilly Elegy are decidedly polarized: critics panned the same film general audience members loved: 
+![Hillbilly Elegey RT page](index.en_files/figure-html/rot_tot.png)
+In other words, general audience members on average rated Hillbilly Elegy about 60 percentage points higher than critics... quite a difference in opinion. Taking a cursory glance at Top Critic reviews suggests something a through line that unifies Top Critic feedback: an aversion to not only artistic sensibilities but to the film's political undertones: 
+
+![Hillbilly Elegey Top Critic Reviews](index.en_files/figure-html/critic_review.png)
+
+Seeing this discrepancy brought to mind both: (1) other RT titles where Critics and Audience members held strongly opposed views --- see [Star Wars: The Last Jedi](https://www.rottentomatoes.com/m/star_wars_the_last_jedi) where Critics rated the film at 90% to the Audience's 42% --- and (2) growing evidence of [media consumption differences](https://www.nytimes.com/interactive/2016/12/26/upshot/duck-dynasty-vs-modern-family-television-maps.html) as a part of larger political/cultural polarization trends. 
+
+With all of this background in mind, I assembled a dataset to help answer the following questions: 
+
+* Do Rotten Tomatoes Reviews evidence systematic film-taste differences between cultural elites (e.g. Critics Audience Reviews) and general audiences (e.g. Audience Reviews)? 
+* Are taste differences growing over time? If so, in which direction? 
+* What are the box office implications of producing films which divide Critics and Audience members? 
+
+
+In later versions of the page, I will spell out the details of the dataset creation. At a high level, all I did was: first, web-scrape Wikipedia for all American films made annually between 1920-2020; second web-scrape Rotten Tomatoes for Critic/Audience scores; and, third, web-scrape [IMDb](https://www.imdb.com/?ref_=nv_home) for information about the film (e.g. box office gross world wide and in the US, operating budget, director, etc). Web scraping was performed using R's `rvest` library. All said and done, the final web-scraped/merged dataset has about a 8,900 movies across the past century (1920-2020) of American film.  
+
+
+
+```{r echo=FALSE, include=FALSE}
+library(readr)
+library(tidyverse)
+library(ggplot2)
+Movie_merge=read_csv("~/Desktop/Indiana/Year 4/Misc Data Projects/Movie_merge.csv")
+
+Movie_merge%>%
+  mutate(AllCriticsScore=as.numeric(AllCriticsScore),
+         AudienceScore=as.numeric(AudienceScore),
+         dif=AllCriticsScore-AudienceScore,
+         a_dif=abs(dif))%>%
+  group_by(Year)%>%
+  summarise(var=mean(dif,na.rm=TRUE))%>%View()
+
+g1=Movie_merge%>%
+  mutate(AllCriticsScore=as.numeric(AllCriticsScore),
+         AudienceScore=as.numeric(AudienceScore),
+         dif=AllCriticsScore-AudienceScore,
+         a_dif=abs(dif),
+         genre2=substr(Genre,1,regexpr(",",Genre)-1)%>%toupper(),
+         bin=cut(dif,breaks = seq(-100,100,by=10)))%>%
+  filter(is.na(bin)==F)%>%
+  group_by(bin)%>%
+  tally()%>%
+  ungroup()%>%
+  mutate(share=n/sum(n))%>%
+  ggplot(aes(x=bin,y=share))+
+  geom_bar(stat="identity",color="black",aes(fill=share))+
+  ggthemes::theme_clean()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  labs(x="Critic Score-Audience Score Bin",y="Total share of movies",fill="Movie Share")
+
+
+g3=Movie_merge%>%
+  mutate(AllCriticsScore=as.numeric(AllCriticsScore),
+         AudienceScore=as.numeric(AudienceScore),
+         dif=AllCriticsScore-AudienceScore,
+         a_dif=abs(dif),
+         genre2=substr(Genre,1,regexpr(",",Genre)-1)%>%toupper(),
+         bin=cut(dif,breaks = seq(-100,100,by=10)))%>%
+  filter(is.na(bin)==F)%>%
+  group_by(bin,genre2)%>%
+  tally()%>%
+  ungroup()%>%
+  group_by(genre2)%>%
+  mutate(share=n/sum(n))%>%
+  ggplot(aes(x=bin,y=share))+
+  geom_bar(stat="identity",color="black",aes(fill=share))+
+    facet_wrap(~genre2)+
+  ggthemes::theme_clean()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  labs(x="Critic Score-Audience Score Bin",y="Total share of movies",fill="Movie Share")
+
+g4=Movie_merge%>%
+  mutate(AllCriticsScore=as.numeric(AllCriticsScore),
+         AudienceScore=as.numeric(AudienceScore),
+         dif=AllCriticsScore-AudienceScore)%>%
+  group_by(Year)%>%
+  filter(Year>1929)%>%
+  summarise(std_var=var(dif,na.rm=T)/(n()))%>%
+  ggplot(aes(x=Year,y=std_var))+
+  geom_line()+
+  scale_x_continuous(breaks = seq(1930,2010,10))+
+  geom_smooth(method = "loess",se=F,span=0.25)+
+  labs(x="Year",y="Std Variance")+
+  ggthemes::theme_clean()
+  
+
+
+```
+Score discrepancy distribution:
+
+```{r echo=FALSE, include=FALSE}
+g1
 ```
 
-# Including Plots
+Score discrepancy standardized variance over time:
 
-You can also embed plots. See Figure \@ref(fig:pie) for example:
-
-```{r pie, fig.cap='A fancy pie chart.', tidy=FALSE}
-par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c('Sky', 'Sunny side of pyramid', 'Shady side of pyramid'),
-  col = c('#0292D8', '#F7EA39', '#C4B632'),
-  init.angle = -50, border = NA
-)
+```{r echo=FALSE, include=FALSE}
+g4
 ```
+
