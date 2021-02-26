@@ -17,11 +17,17 @@
   name = "Accomplishments"
   url = "#accomplishments"
   weight = 30
+  
+[[main]]
+  name = "The Curious Economist"
+  url = "#posts"
+  weight = 40  
+  
 
 [[main]]
   name = "Contact"
   url = "#contact"
-  weight = 40
+  weight = 50
 
 # Link to a PDF of your resume/CV from the menu.
 # To enable, copy your resume/CV to `static/media/resume.pdf` and uncomment the lines below.
