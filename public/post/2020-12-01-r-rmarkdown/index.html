@@ -1,0 +1,1326 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.0.0-beta.3 for Hugo" />
+  
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="David Terner" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="First post thoughts Throughout the year, I come across interesting datasets that are ripe for story telling but that are without an obvious research dimension/question." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/2020-12-01-r-rmarkdown/" />
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#3f51b5" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.2/lazysizes.min.js" integrity="sha512-TmDwFLhg3UA4ZG0Eb4MIyT1O1Mb+Oww5kFG0uHqXsdbyZz9DcvYQhKpGgNkamAI6h2lGGZq2X8ftOJvF/XjTUg==" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono&display=swap">
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.d29e20a22c8d3cb5a7ee60076981bbd1.css" />
+
+  
+
+
+
+  
+
+  
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/index.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/images/icon_hu8edb16adddcb0b565a3e3b74e788d0c6_306732_32x32_fill_lanczos_center_2.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu8edb16adddcb0b565a3e3b74e788d0c6_306732_180x180_fill_lanczos_center_2.png" />
+
+  <link rel="canonical" href="/post/2020-12-01-r-rmarkdown/" />
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="David Terner" />
+  <meta property="og:url" content="/post/2020-12-01-r-rmarkdown/" />
+  <meta property="og:title" content="Are we watching the same movie? Diverging tastes among Rotten Tomatoes reviews | David Terner" />
+  <meta property="og:description" content="First post thoughts Throughout the year, I come across interesting datasets that are ripe for story telling but that are without an obvious research dimension/question." /><meta property="og:image" content="/images/icon_hu8edb16adddcb0b565a3e3b74e788d0c6_306732_512x512_fill_lanczos_center_2.png" />
+    <meta property="twitter:image" content="/images/icon_hu8edb16adddcb0b565a3e3b74e788d0c6_306732_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-02-26T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-02-26T16:26:50-05:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/2020-12-01-r-rmarkdown/"
+  },
+  "headline": "Are we watching the same movie? Diverging tastes among Rotten Tomatoes reviews",
+  
+  "datePublished": "2021-02-26T00:00:00Z",
+  "dateModified": "2021-02-26T16:26:50-05:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "David Terner"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "David Terner",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/images/icon_hu8edb16adddcb0b565a3e3b74e788d0c6_306732_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "First post thoughts Throughout the year, I come across interesting datasets that are ripe for story telling but that are without an obvious research dimension/question."
+}
+</script>
+
+  
+
+  
+
+  
+  
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.js" integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.1/cookieconsent.min.css" integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin="anonymous">
+  
+  <script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#3f51b5",
+          "text": "rgb(255, 255, 255)"
+        },
+        "button": {
+          "background": "rgb(255, 255, 255)",
+          "text": "#3f51b5"
+        }
+      },
+      "theme": "classic",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "https://www.cookiesandyou.com"
+      }
+    })});
+  </script>
+
+
+  
+
+
+
+
+
+  <title>Are we watching the same movie? Diverging tastes among Rotten Tomatoes reviews | David Terner</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper  ">
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.eca9bbc7a71accd5ebd9eee0ff004132.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">David Terner</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">David Terner</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#experience"><span>Professional Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#accomplishments"><span>Accomplishments</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>The Curious Economist</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+          
+          <li class="nav-item d-none d-lg-inline-flex">
+            <a class="nav-link" href="/"  aria-label="">
+              <i class="fas fa-" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Are we watching the same movie? Diverging tastes among Rotten Tomatoes reviews</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Feb 26, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    9 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/r/">R</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src="/post/2020-12-01-r-rmarkdown/index.en_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="/post/2020-12-01-r-rmarkdown/index.en_files/plotly-binding/plotly.js"></script>
+<script src="/post/2020-12-01-r-rmarkdown/index.en_files/typedarray/typedarray.min.js"></script>
+<script src="/post/2020-12-01-r-rmarkdown/index.en_files/jquery/jquery.min.js"></script>
+<link href="/post/2020-12-01-r-rmarkdown/index.en_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="/post/2020-12-01-r-rmarkdown/index.en_files/crosstalk/js/crosstalk.min.js"></script>
+<link href="/post/2020-12-01-r-rmarkdown/index.en_files/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="/post/2020-12-01-r-rmarkdown/index.en_files/plotly-main/plotly-latest.min.js"></script>
+
+
+<div id="first-post-thoughts" class="section level1">
+<h1>First post thoughts</h1>
+<p>Throughout the year, I come across interesting datasets that are ripe for story telling but that are without an obvious research dimension/question. This portion of the website is dedicated to sharing the first inklings that come to mind after sorting through and trying to glean a pattern (or two) from the data.</p>
+</div>
+<div id="you-say-tomato-i-say-tomato" class="section level1">
+<h1>You say tomato, I say tomato?</h1>
+<p><a href="https://www.harpercollins.com/products/hillbilly-elegy-j-d-vance?variant=32207704391714">Hillbilly Elegy</a> is a highly readable, personal memoir detailing author <a href="https://en.wikipedia.org/wiki/J._D._Vance">J.D. Vance</a>’s journey from/through a Appalachian (broken) community on to Yale Law School. The book was initially held in wide esteem, particularly among <em>The Atlantic</em> devotees, for providing a glimpse into the often inscrutable (to outsiders) class of voters who helped to elect Donald Trump. In response to the book’s appeal and commercial success (<em>New York Times</em> Best Seller List 2016-2017), director <a href="https://www.rollingstone.com/movies/movie-news/ron-howard-to-direct-produce-hillbilly-elegy-movie-123741/">Ron Howard</a> partnered with Netflix to adapt J.D.’s story for a full length motion picture. Given the source material, the choice of director, the talents of <a href="https://en.wikipedia.org/wiki/Amy_Adams">Amy Adams</a> and <a href="https://en.wikipedia.org/wiki/Glenn_Close">Glenn Close</a>, and a musical score by <a href="https://filmmusicreporter.com/2020/03/10/hans-zimmer-to-reteam-with-ron-howard-on-hillbilly-elegy/">Hans Zimmer</a>, the film appeared poised for future success.</p>
+<p>It was not to be. Well, defining <u>success</u> for which <u>kind</u> of audience is a matter of keen interest, and Rotten Tomatoes helps us get at measurement questions.</p>
+<p><a href="https://www.rottentomatoes.com/">Rotten Tomatoes</a> (RT hereafter) is review-aggregation website where users can rate and review both movies and television shows. RT reviewers fall into two camps: critics and (general) audience. “Critics” typically belong to: writing guilds, film critic associations, and/or major newspapers whereas “Audience” reviews come from any/all RT users with an RT account.</p>
+<p>RT’s <a href="https://www.rottentomatoes.com/m/hillbilly_elegy">reviews</a> of Hillbilly Elegy are decidedly polarized: critics panned the same film general audience members loved:
+<img src="/post/2020-12-01-r-rmarkdown/index.en_files/figure-html/rot_tot.png" alt="Hillbilly Elegey RT page" />
+In other words, general audience members on average rated Hillbilly Elegy about 60 percentage points higher than critics… quite a difference in opinion. Taking a cursory glance at Top Critic reviews suggests something a through line that unifies Top Critic feedback: an aversion to not only artistic sensibilities but to the film’s political undertones:</p>
+<div class="figure">
+<img src="/post/2020-12-01-r-rmarkdown/index.en_files/figure-html/critic_review.png" alt="" />
+<p class="caption">Hillbilly Elegey Top Critic Reviews</p>
+</div>
+<p>Seeing this discrepancy brought to mind both: (1) other RT titles where Critics and Audience members held strongly opposed views — see <a href="https://www.rottentomatoes.com/m/star_wars_the_last_jedi">Star Wars: The Last Jedi</a> where Critics rated the film at 90% to the Audience’s 42% — and (2) growing evidence of <a href="https://www.nytimes.com/interactive/2016/12/26/upshot/duck-dynasty-vs-modern-family-television-maps.html">media consumption differences</a> as a part of larger political/cultural polarization trends.</p>
+<p>With all of this background in mind, I assembled a dataset to help answer the following questions:</p>
+<ul>
+<li>Do Rotten Tomatoes Reviews evidence systematic film-taste differences between cultural elites (e.g. Critics Audience Reviews) and general audiences (e.g. Audience Reviews)?</li>
+<li>Are taste differences growing over time? If so, in which direction?</li>
+<li>What are the box office implications of producing films which divide Critics and Audience members?</li>
+</ul>
+<p>In later versions of the page, I will spell out the details of the dataset creation. At a high level, all I did was: first, web-scrape Wikipedia for all American films made annually between 1920-2020; second web-scrape Rotten Tomatoes for Critic/Audience scores; and, third, web-scrape <a href="https://www.imdb.com/?ref_=nv_home">IMDb</a> for information about the film (e.g. box office gross world wide and in the US, operating budget, director, etc). Web scraping was performed using R’s <code>rvest</code> library. All said and done, the final web-scraped/merged dataset has about a 8,900 movies across the past century (1920-2020) of American film.</p>
+<div id="preliminary-results" class="section level2">
+<h2>Preliminary Results</h2>
+<p>Define <em>score discrepancy</em>, <span class="math inline">\(s_i\)</span>, as the difference between the Critic and Audience RT score for film <span class="math inline">\(i\)</span>. If <span class="math inline">\(s_i&lt;0\; (s_i&gt;0),\)</span> this means that Audience (Critic) reviewers, on average, liked film <span class="math inline">\(i\)</span> more than Critic (Audience) Reviewers.</p>
+<p>The first chart depicts the distribution of <span class="math inline">\(s_i\)</span> across all years in the data. I compute the share of films with score discrepancies that fall within 10-percent increments (e.g. films were Critics scored a film between 0 and 10 percentage points higher than Audience members account for 22.6% of films). Notice that the total number of films where <span class="math inline">\(|s_i|\leq10\%\)</span> is about 40% of all movies and that Audience reviewers tend to rate movies slightly higher (e.g. <span class="math inline">\(s_i&lt;0\)</span> accounts for 52% of all films).</p>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"data":[{"orientation":"v","width":0.899999999999999,"base":0,"x":[16],"y":[0.00013869625520111],"text":"share: 0.0001386963<br />bin: (70,80]<br />share: 0.0001386963","type":"bar","marker":{"autocolorscale":false,"color":"rgba(19,43,67,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[15],"y":[0.000416088765603329],"text":"share: 0.0004160888<br />bin: (60,70]<br />share: 0.0004160888","type":"bar","marker":{"autocolorscale":false,"color":"rgba(19,43,67,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[1],"y":[0.0013869625520111],"text":"share: 0.0013869626<br />bin: (-80,-70]<br />share: 0.0013869626","type":"bar","marker":{"autocolorscale":false,"color":"rgba(19,44,68,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[14],"y":[0.00180305131761442],"text":"share: 0.0018030513<br />bin: (50,60]<br />share: 0.0018030513","type":"bar","marker":{"autocolorscale":false,"color":"rgba(19,44,68,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[2],"y":[0.00346740638002774],"text":"share: 0.0034674064<br />bin: (-70,-60]<br />share: 0.0034674064","type":"bar","marker":{"autocolorscale":false,"color":"rgba(20,45,69,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[13],"y":[0.00638002773925104],"text":"share: 0.0063800277<br />bin: (40,50]<br />share: 0.0063800277","type":"bar","marker":{"autocolorscale":false,"color":"rgba(21,46,71,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[3],"y":[0.0147018030513176],"text":"share: 0.0147018031<br />bin: (-60,-50]<br />share: 0.0147018031","type":"bar","marker":{"autocolorscale":false,"color":"rgba(23,51,77,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[12],"y":[0.023994452149792],"text":"share: 0.0239944521<br />bin: (30,40]<br />share: 0.0239944521","type":"bar","marker":{"autocolorscale":false,"color":"rgba(25,56,84,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[4],"y":[0.0330097087378641],"text":"share: 0.0330097087<br />bin: (-50,-40]<br />share: 0.0330097087","type":"bar","marker":{"autocolorscale":false,"color":"rgba(28,60,90,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[5],"y":[0.0621359223300971],"text":"share: 0.0621359223<br />bin: (-40,-30]<br />share: 0.0621359223","type":"bar","marker":{"autocolorscale":false,"color":"rgba(36,77,112,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[11],"y":[0.0646324549237171],"text":"share: 0.0646324549<br />bin: (20,30]<br />share: 0.0646324549","type":"bar","marker":{"autocolorscale":false,"color":"rgba(37,78,114,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[6],"y":[0.0973647711511789],"text":"share: 0.0973647712<br />bin: (-30,-20]<br />share: 0.0973647712","type":"bar","marker":{"autocolorscale":false,"color":"rgba(46,97,139,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.9,"base":0,"x":[7],"y":[0.135922330097087],"text":"share: 0.1359223301<br />bin: (-20,-10]<br />share: 0.1359223301","type":"bar","marker":{"autocolorscale":false,"color":"rgba(58,120,170,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[10],"y":[0.153398058252427],"text":"share: 0.1533980583<br />bin: (10,20]<br />share: 0.1533980583","type":"bar","marker":{"autocolorscale":false,"color":"rgba(63,131,185,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[8],"y":[0.175173370319001],"text":"share: 0.1751733703<br />bin: (-10,0]<br />share: 0.1751733703","type":"bar","marker":{"autocolorscale":false,"color":"rgba(70,144,203,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.899999999999999,"base":0,"x":[9],"y":[0.226074895977809],"text":"share: 0.2260748960<br />bin: (0,10]<br />share: 0.2260748960","type":"bar","marker":{"autocolorscale":false,"color":"rgba(86,177,247,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1],"y":[0],"name":"99_3eb0959d0825e25d7b559d6845defda3","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"skip","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#132B43"],[0.00334448160535117,"#132B44"],[0.00668896321070234,"#132C44"],[0.0100334448160535,"#142C45"],[0.0133779264214047,"#142D45"],[0.0167224080267559,"#142D46"],[0.020066889632107,"#142D46"],[0.0234113712374582,"#142E47"],[0.0267558528428094,"#152E47"],[0.0301003344481605,"#152F48"],[0.0334448160535117,"#152F48"],[0.0367892976588629,"#152F49"],[0.040133779264214,"#153049"],[0.0434782608695652,"#16304A"],[0.0468227424749164,"#16304A"],[0.0501672240802676,"#16314B"],[0.0535117056856187,"#16314B"],[0.0568561872909699,"#16324C"],[0.0602006688963211,"#17324D"],[0.0635451505016722,"#17324D"],[0.0668896321070234,"#17334E"],[0.0702341137123746,"#17334E"],[0.0735785953177257,"#17344F"],[0.0769230769230769,"#18344F"],[0.0802675585284281,"#183450"],[0.0836120401337793,"#183550"],[0.0869565217391304,"#183551"],[0.0903010033444816,"#183651"],[0.0936454849498328,"#193652"],[0.0969899665551839,"#193652"],[0.100334448160535,"#193753"],[0.103678929765886,"#193754"],[0.107023411371237,"#193854"],[0.110367892976589,"#1A3855"],[0.11371237458194,"#1A3955"],[0.117056856187291,"#1A3956"],[0.120401337792642,"#1A3956"],[0.123745819397993,"#1A3A57"],[0.127090301003344,"#1B3A57"],[0.130434782608696,"#1B3B58"],[0.133779264214047,"#1B3B59"],[0.137123745819398,"#1B3B59"],[0.140468227424749,"#1C3C5A"],[0.1438127090301,"#1C3C5A"],[0.147157190635451,"#1C3D5B"],[0.150501672240803,"#1C3D5B"],[0.153846153846154,"#1C3D5C"],[0.157190635451505,"#1D3E5C"],[0.160535117056856,"#1D3E5D"],[0.163879598662207,"#1D3F5D"],[0.167224080267559,"#1D3F5E"],[0.17056856187291,"#1D3F5F"],[0.173913043478261,"#1E405F"],[0.177257525083612,"#1E4060"],[0.180602006688963,"#1E4160"],[0.183946488294314,"#1E4161"],[0.187290969899666,"#1E4261"],[0.190635451505017,"#1F4262"],[0.193979933110368,"#1F4263"],[0.197324414715719,"#1F4363"],[0.20066889632107,"#1F4364"],[0.204013377926421,"#1F4464"],[0.207357859531773,"#204465"],[0.210702341137124,"#204465"],[0.214046822742475,"#204566"],[0.217391304347826,"#204566"],[0.220735785953177,"#214667"],[0.224080267558528,"#214668"],[0.22742474916388,"#214768"],[0.230769230769231,"#214769"],[0.234113712374582,"#214769"],[0.237458193979933,"#22486A"],[0.240802675585284,"#22486A"],[0.244147157190635,"#22496B"],[0.247491638795987,"#22496C"],[0.250836120401338,"#224A6C"],[0.254180602006689,"#234A6D"],[0.25752508361204,"#234A6D"],[0.260869565217391,"#234B6E"],[0.264214046822742,"#234B6E"],[0.267558528428094,"#244C6F"],[0.270903010033445,"#244C70"],[0.274247491638796,"#244C70"],[0.277591973244147,"#244D71"],[0.280936454849498,"#244D71"],[0.284280936454849,"#254E72"],[0.287625418060201,"#254E72"],[0.290969899665552,"#254F73"],[0.294314381270903,"#254F74"],[0.297658862876254,"#254F74"],[0.301003344481605,"#265075"],[0.304347826086957,"#265075"],[0.307692307692308,"#265176"],[0.311036789297659,"#265176"],[0.31438127090301,"#275277"],[0.317725752508361,"#275278"],[0.321070234113712,"#275278"],[0.324414715719063,"#275379"],[0.327759197324415,"#275379"],[0.331103678929766,"#28547A"],[0.334448160535117,"#28547B"],[0.337792642140468,"#28557B"],[0.341137123745819,"#28557C"],[0.344481605351171,"#28567C"],[0.347826086956522,"#29567D"],[0.351170568561873,"#29567D"],[0.354515050167224,"#29577E"],[0.357859531772575,"#29577F"],[0.361204013377926,"#2A587F"],[0.364548494983278,"#2A5880"],[0.367892976588629,"#2A5980"],[0.37123745819398,"#2A5981"],[0.374581939799331,"#2A5982"],[0.377926421404682,"#2B5A82"],[0.381270903010033,"#2B5A83"],[0.384615384615385,"#2B5B83"],[0.387959866220736,"#2B5B84"],[0.391304347826087,"#2C5C85"],[0.394648829431438,"#2C5C85"],[0.397993311036789,"#2C5D86"],[0.40133779264214,"#2C5D86"],[0.404682274247492,"#2C5D87"],[0.408026755852843,"#2D5E87"],[0.411371237458194,"#2D5E88"],[0.414715719063545,"#2D5F89"],[0.418060200668896,"#2D5F89"],[0.421404682274247,"#2E608A"],[0.424749163879599,"#2E608A"],[0.42809364548495,"#2E618B"],[0.431438127090301,"#2E618C"],[0.434782608695652,"#2E618C"],[0.438127090301003,"#2F628D"],[0.441471571906354,"#2F628D"],[0.444816053511706,"#2F638E"],[0.448160535117057,"#2F638F"],[0.451505016722408,"#30648F"],[0.454849498327759,"#306490"],[0.45819397993311,"#306590"],[0.461538461538462,"#306591"],[0.464882943143813,"#306592"],[0.468227424749164,"#316692"],[0.471571906354515,"#316693"],[0.474916387959866,"#316793"],[0.478260869565217,"#316794"],[0.481605351170569,"#326895"],[0.48494983277592,"#326895"],[0.488294314381271,"#326996"],[0.491638795986622,"#326996"],[0.494983277591973,"#326997"],[0.498327759197324,"#336A98"],[0.501672240802675,"#336A98"],[0.505016722408027,"#336B99"],[0.508361204013378,"#336B99"],[0.511705685618729,"#346C9A"],[0.51505016722408,"#346C9B"],[0.518394648829431,"#346D9B"],[0.521739130434783,"#346D9C"],[0.525083612040134,"#346E9D"],[0.528428093645485,"#356E9D"],[0.531772575250836,"#356E9E"],[0.535117056856187,"#356F9E"],[0.538461538461538,"#356F9F"],[0.54180602006689,"#3670A0"],[0.545150501672241,"#3670A0"],[0.548494983277592,"#3671A1"],[0.551839464882943,"#3671A1"],[0.555183946488294,"#3772A2"],[0.558528428093645,"#3772A3"],[0.561872909698997,"#3773A3"],[0.565217391304348,"#3773A4"],[0.568561872909699,"#3773A4"],[0.57190635451505,"#3874A5"],[0.575250836120401,"#3874A6"],[0.578595317725752,"#3875A6"],[0.581939799331104,"#3875A7"],[0.585284280936455,"#3976A8"],[0.588628762541806,"#3976A8"],[0.591973244147157,"#3977A9"],[0.595317725752508,"#3977A9"],[0.59866220735786,"#3978AA"],[0.602006688963211,"#3A78AB"],[0.605351170568562,"#3A79AB"],[0.608695652173913,"#3A79AC"],[0.612040133779264,"#3A79AC"],[0.615384615384615,"#3B7AAD"],[0.618729096989966,"#3B7AAE"],[0.622073578595318,"#3B7BAE"],[0.625418060200669,"#3B7BAF"],[0.62876254180602,"#3C7CB0"],[0.632107023411371,"#3C7CB0"],[0.635451505016722,"#3C7DB1"],[0.638795986622073,"#3C7DB1"],[0.642140468227425,"#3C7EB2"],[0.645484949832776,"#3D7EB3"],[0.648829431438127,"#3D7FB3"],[0.652173913043478,"#3D7FB4"],[0.655518394648829,"#3D7FB5"],[0.65886287625418,"#3E80B5"],[0.662207357859532,"#3E80B6"],[0.665551839464883,"#3E81B6"],[0.668896321070234,"#3E81B7"],[0.672240802675585,"#3F82B8"],[0.675585284280936,"#3F82B8"],[0.678929765886288,"#3F83B9"],[0.682274247491639,"#3F83BA"],[0.68561872909699,"#4084BA"],[0.688963210702341,"#4084BB"],[0.692307692307692,"#4085BB"],[0.695652173913043,"#4085BC"],[0.698996655518395,"#4086BD"],[0.702341137123746,"#4186BD"],[0.705685618729097,"#4186BE"],[0.709030100334448,"#4187BF"],[0.712374581939799,"#4187BF"],[0.71571906354515,"#4288C0"],[0.719063545150502,"#4288C1"],[0.722408026755853,"#4289C1"],[0.725752508361204,"#4289C2"],[0.729096989966555,"#438AC2"],[0.732441471571906,"#438AC3"],[0.735785953177257,"#438BC4"],[0.739130434782609,"#438BC4"],[0.74247491638796,"#438CC5"],[0.745819397993311,"#448CC6"],[0.749163879598662,"#448DC6"],[0.752508361204013,"#448DC7"],[0.755852842809364,"#448EC8"],[0.759197324414716,"#458EC8"],[0.762541806020067,"#458FC9"],[0.765886287625418,"#458FC9"],[0.769230769230769,"#458FCA"],[0.77257525083612,"#4690CB"],[0.775919732441471,"#4690CB"],[0.779264214046823,"#4691CC"],[0.782608695652174,"#4691CD"],[0.785953177257525,"#4792CD"],[0.789297658862876,"#4792CE"],[0.792642140468227,"#4793CF"],[0.795986622073579,"#4793CF"],[0.79933110367893,"#4894D0"],[0.802675585284281,"#4894D0"],[0.806020066889632,"#4895D1"],[0.809364548494983,"#4895D2"],[0.812709030100334,"#4896D2"],[0.816053511705686,"#4996D3"],[0.819397993311037,"#4997D4"],[0.822742474916388,"#4997D4"],[0.826086956521739,"#4998D5"],[0.82943143812709,"#4A98D6"],[0.832775919732441,"#4A99D6"],[0.836120401337793,"#4A99D7"],[0.839464882943144,"#4A9AD8"],[0.842809364548495,"#4B9AD8"],[0.846153846153846,"#4B9BD9"],[0.849498327759197,"#4B9BDA"],[0.852842809364548,"#4B9BDA"],[0.8561872909699,"#4C9CDB"],[0.859531772575251,"#4C9CDB"],[0.862876254180602,"#4C9DDC"],[0.866220735785953,"#4C9DDD"],[0.869565217391304,"#4D9EDD"],[0.872909698996655,"#4D9EDE"],[0.876254180602007,"#4D9FDF"],[0.879598662207358,"#4D9FDF"],[0.882943143812709,"#4DA0E0"],[0.88628762541806,"#4EA0E1"],[0.889632107023411,"#4EA1E1"],[0.892976588628763,"#4EA1E2"],[0.896321070234114,"#4EA2E3"],[0.899665551839465,"#4FA2E3"],[0.903010033444816,"#4FA3E4"],[0.906354515050167,"#4FA3E5"],[0.909698996655518,"#4FA4E5"],[0.91304347826087,"#50A4E6"],[0.916387959866221,"#50A5E7"],[0.919732441471572,"#50A5E7"],[0.923076923076923,"#50A6E8"],[0.926421404682274,"#51A6E8"],[0.929765886287625,"#51A7E9"],[0.933110367892977,"#51A7EA"],[0.936454849498328,"#51A8EA"],[0.939799331103679,"#52A8EB"],[0.94314381270903,"#52A9EC"],[0.946488294314381,"#52A9EC"],[0.949832775919732,"#52AAED"],[0.953177257525084,"#53AAEE"],[0.956521739130435,"#53ABEE"],[0.959866220735786,"#53ABEF"],[0.963210702341137,"#53ACF0"],[0.966555183946488,"#54ACF0"],[0.969899665551839,"#54ADF1"],[0.973244147157191,"#54ADF2"],[0.976588628762542,"#54AEF2"],[0.979933110367893,"#55AEF3"],[0.983277591973244,"#55AFF4"],[0.986622073578595,"#55AFF4"],[0.989966555183946,"#55B0F5"],[0.993311036789298,"#56B0F6"],[0.996655518394649,"#56B1F6"],[1,"#56B1F7"]],"colorbar":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"rgba(0,0,0,1)","borderwidth":2.06156048675734,"thickness":23.04,"title":"Movie Share","titlefont":{"color":"rgba(0,0,0,1)","family":"sans","size":15.9402241594022},"tickmode":"array","ticktext":["0.05","0.10","0.15","0.20"],"tickvals":[0.220687538367096,0.441988950276243,0.66329036218539,0.884591774094536],"tickfont":{"color":"rgba(0,0,0,1)","family":"sans","size":14.6118721461187},"ticklen":2,"len":0.5}},"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":27.1581569115816,"r":7.97011207970112,"b":82.2249896222499,"l":49.1490244914903},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"sans","size":15.9402241594022},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,16.6],"tickmode":"array","ticktext":["(-80,-70]","(-70,-60]","(-60,-50]","(-50,-40]","(-40,-30]","(-30,-20]","(-20,-10]","(-10,0]","(0,10]","(10,20]","(20,30]","(30,40]","(40,50]","(50,60]","(60,70]","(70,80]"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],"categoryorder":"array","categoryarray":["(-80,-70]","(-70,-60]","(-60,-50]","(-50,-40]","(-40,-30]","(-30,-20]","(-20,-10]","(-10,0]","(0,10]","(10,20]","(20,30]","(30,40]","(40,50]","(50,60]","(60,70]","(70,80]"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":3.98505603985056,"tickwidth":0.724555643609193,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"sans","size":11.9551681195517},"tickangle":-90,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Critic Score-Audience Score Bin","font":{"color":"rgba(0,0,0,1)","family":"sans","size":13.2835201328352}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.0113037447988904,0.237378640776699],"tickmode":"array","ticktext":["0.00","0.05","0.10","0.15","0.20"],"tickvals":[0,0.05,0.1,0.15,0.2],"categoryorder":"array","categoryarray":["0.00","0.05","0.10","0.15","0.20"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":3.98505603985056,"tickwidth":0.724555643609193,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"sans","size":11.9551681195517},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":true,"gridcolor":"rgba(190,190,190,1)","gridwidth":0.724555643609193,"zeroline":false,"anchor":"x","title":{"text":"Total share of movies","font":{"color":"rgba(0,0,0,1)","family":"sans","size":13.2835201328352}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"rgba(0,0,0,1)","borderwidth":2.06156048675734,"font":{"color":"rgba(0,0,0,1)","family":"sans","size":14.6118721461187}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"7bdb177552aa":{"fill":{},"x":{},"y":{},"type":"bar"}},"cur_data":"7bdb177552aa","visdat":{"7bdb177552aa":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>The second chart gives us our first look at time trends. I constructed this chart by computing the variance of <span class="math inline">\(s_i(t),\)</span> that is all films from year <span class="math inline">\(t\)</span>, and then dividing said variance by the number of films that year thus “standardizing” the variance. Notice here that there is a downward trend/less score discrepancy variation up until about 2010.</p>
+<p><img src="/post/2020-12-01-r-rmarkdown/index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The third chart plots the expected score difference for films in year <span class="math inline">\(t\)</span>. Up until the mid-1980’s, Critics tended to rate films higher than to Audience members. From the mid-1980’s to the about 2015, Audience members tended to rate films higher relative to Critics. Two important caveats here:</p>
+<ol style="list-style-type: decimal">
+<li><p>The dashed red line signifies the year (1998) that RT was launched as a website. Film scores before 1998 reflect <em>contemporary</em> audiences evaluating <em>historical</em> films whereas scores post 1998 reflect <em>contemporary</em> audiences evaluating <em>contemporary</em> films.</p></li>
+<li><p>From about 2006 to 2018, the expected score difference went from roughly -17% to +5%. Put differently, expected film scores <strong>swing about 20 percentage points in little more than a decade</strong>. In historical context, the same kind of score jump took about three (3) decades to complete: expected score differences went from +5% in 1976 to -17% in 2006.</p></li>
+</ol>
+<div id="htmlwidget-2" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"data":[{"orientation":"v","width":[0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091,0.900000000000091],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1.38461538461538,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-3.82022471910112,0,0,-2.24390243902439,-0.633663366336634,-6.55371900826446,-4.68103448275862,-4.03401360544218,-3.56666666666667,-4.81560283687943,-4.00671140939597,-7.80851063829787,-5.5,-6.45390070921986,-9.41104294478528,-9.41317365269461,-6.15300546448087,-6.64673913043478,-10.2413793103448,-11.2602739726027,-7.16,-13.222972972973,-7.95945945945946,-9.93793103448276,-11.5769230769231,-12.2049180327869,-17.4188034188034,-10.8691588785047,-10.7294117647059,-3.97191011235955,-5.68852459016393,-3.91463414634146,-3.47643979057592,-0.267543859649123,-4.26315789473684,-3.38383838383838,-1.37254901960784,0,0,0,0],"x":[1920,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1931,1932,1933,1934,1935,1936,1937,1938,1939,1940,1941,1942,1943,1944,1945,1946,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[16,5,20,4,3,12.5,32,20.1666666666667,15.1,17.7777777777778,29.4285714285714,16.3571428571429,19.8823529411765,16.4,21,11.8125,11.0952380952381,15,7.66666666666667,10.9473684210526,16.5217391304348,12.6315789473684,17.9583333333333,13.2692307692308,11.9375,9.27272727272727,16.2777777777778,8.83333333333333,11,7.05263157894737,11.2608695652174,13.5,5.31578947368421,9.45833333333333,5.8,8,4.57142857142857,4.45,8.84,5.76470588235294,2.60714285714286,2.81481481481481,1.93333333333333,2.54838709677419,1.48837209302326,1.38461538461538,6.87096774193548,0.75609756097561,5.69767441860465,1.65789473684211,2.53333333333333,3.83018867924528,4.78260869565217,4.44262295081967,0.551020408163265,2.06818181818182,5.27777777777778,1,3.36065573770492,2.08474576271186,3.82022471910112,1,1.69047619047619,2.24390243902439,0.633663366336634,6.55371900826446,4.68103448275862,4.03401360544218,3.56666666666667,4.81560283687943,4.00671140939597,7.80851063829787,5.5,6.45390070921986,9.41104294478528,9.41317365269461,6.15300546448087,6.64673913043478,10.2413793103448,11.2602739726027,7.16,13.222972972973,7.95945945945946,9.93793103448276,11.5769230769231,12.2049180327869,17.4188034188034,10.8691588785047,10.7294117647059,3.97191011235955,5.68852459016393,3.91463414634146,3.47643979057592,0.267543859649123,4.26315789473684,3.38383838383838,1.37254901960784,1.72727272727273,5.79816513761468,2.38235294117647,2.06382978723404],"text":["Year: 1920<br />var: 16.0000000","Year: 1921<br />var:  5.0000000","Year: 1922<br />var: 20.0000000","Year: 1923<br />var:  4.0000000","Year: 1924<br />var:  3.0000000","Year: 1925<br />var: 12.5000000","Year: 1926<br />var: 32.0000000","Year: 1927<br />var: 20.1666667","Year: 1928<br />var: 15.1000000","Year: 1929<br />var: 17.7777778","Year: 1930<br />var: 29.4285714","Year: 1931<br />var: 16.3571429","Year: 1932<br />var: 19.8823529","Year: 1933<br />var: 16.4000000","Year: 1934<br />var: 21.0000000","Year: 1935<br />var: 11.8125000","Year: 1936<br />var: 11.0952381","Year: 1937<br />var: 15.0000000","Year: 1938<br />var:  7.6666667","Year: 1939<br />var: 10.9473684","Year: 1940<br />var: 16.5217391","Year: 1941<br />var: 12.6315789","Year: 1942<br />var: 17.9583333","Year: 1943<br />var: 13.2692308","Year: 1944<br />var: 11.9375000","Year: 1945<br />var:  9.2727273","Year: 1946<br />var: 16.2777778","Year: 1947<br />var:  8.8333333","Year: 1948<br />var: 11.0000000","Year: 1949<br />var:  7.0526316","Year: 1950<br />var: 11.2608696","Year: 1951<br />var: 13.5000000","Year: 1952<br />var:  5.3157895","Year: 1953<br />var:  9.4583333","Year: 1954<br />var:  5.8000000","Year: 1955<br />var:  8.0000000","Year: 1956<br />var:  4.5714286","Year: 1957<br />var:  4.4500000","Year: 1958<br />var:  8.8400000","Year: 1959<br />var:  5.7647059","Year: 1960<br />var:  2.6071429","Year: 1961<br />var:  2.8148148","Year: 1962<br />var:  1.9333333","Year: 1963<br />var:  2.5483871","Year: 1964<br />var:  1.4883721","Year: 1965<br />var:  1.3846154","Year: 1966<br />var:  6.8709677","Year: 1967<br />var:  0.7560976","Year: 1968<br />var:  5.6976744","Year: 1969<br />var:  1.6578947","Year: 1970<br />var:  2.5333333","Year: 1971<br />var:  3.8301887","Year: 1972<br />var:  4.7826087","Year: 1973<br />var:  4.4426230","Year: 1974<br />var:  0.5510204","Year: 1975<br />var:  2.0681818","Year: 1976<br />var:  5.2777778","Year: 1977<br />var:  1.0000000","Year: 1978<br />var:  3.3606557","Year: 1979<br />var:  2.0847458","Year: 1980<br />var:  3.8202247","Year: 1981<br />var:  1.0000000","Year: 1982<br />var:  1.6904762","Year: 1983<br />var:  2.2439024","Year: 1984<br />var:  0.6336634","Year: 1985<br />var:  6.5537190","Year: 1986<br />var:  4.6810345","Year: 1987<br />var:  4.0340136","Year: 1988<br />var:  3.5666667","Year: 1989<br />var:  4.8156028","Year: 1990<br />var:  4.0067114","Year: 1991<br />var:  7.8085106","Year: 1992<br />var:  5.5000000","Year: 1993<br />var:  6.4539007","Year: 1994<br />var:  9.4110429","Year: 1995<br />var:  9.4131737","Year: 1996<br />var:  6.1530055","Year: 1997<br />var:  6.6467391","Year: 1998<br />var: 10.2413793","Year: 1999<br />var: 11.2602740","Year: 2000<br />var:  7.1600000","Year: 2001<br />var: 13.2229730","Year: 2002<br />var:  7.9594595","Year: 2003<br />var:  9.9379310","Year: 2004<br />var: 11.5769231","Year: 2005<br />var: 12.2049180","Year: 2006<br />var: 17.4188034","Year: 2007<br />var: 10.8691589","Year: 2008<br />var: 10.7294118","Year: 2009<br />var:  3.9719101","Year: 2010<br />var:  5.6885246","Year: 2011<br />var:  3.9146341","Year: 2012<br />var:  3.4764398","Year: 2013<br />var:  0.2675439","Year: 2014<br />var:  4.2631579","Year: 2015<br />var:  3.3838384","Year: 2016<br />var:  1.3725490","Year: 2017<br />var:  1.7272727","Year: 2018<br />var:  5.7981651","Year: 2019<br />var:  2.3823529","Year: 2020<br />var:  2.0638298"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(89,89,89,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1920,1921.26582278481,1922.53164556962,1923.79746835443,1925.06329113924,1926.32911392405,1927.59493670886,1928.86075949367,1930.12658227848,1931.39240506329,1932.6582278481,1933.92405063291,1935.18987341772,1936.45569620253,1937.72151898734,1938.98734177215,1940.25316455696,1941.51898734177,1942.78481012658,1944.05063291139,1945.3164556962,1946.58227848101,1947.84810126582,1949.11392405063,1950.37974683544,1951.64556962025,1952.91139240506,1954.17721518987,1955.44303797468,1956.70886075949,1957.9746835443,1959.24050632911,1960.50632911392,1961.77215189873,1963.03797468354,1964.30379746835,1965.56962025316,1966.83544303797,1968.10126582278,1969.36708860759,1970.63291139241,1971.89873417722,1973.16455696203,1974.43037974684,1975.69620253165,1976.96202531646,1978.22784810127,1979.49367088608,1980.75949367089,1982.0253164557,1983.29113924051,1984.55696202532,1985.82278481013,1987.08860759494,1988.35443037975,1989.62025316456,1990.88607594937,1992.15189873418,1993.41772151899,1994.6835443038,1995.94936708861,1997.21518987342,1998.48101265823,1999.74683544304,2001.01265822785,2002.27848101266,2003.54430379747,2004.81012658228,2006.07594936709,2007.3417721519,2008.60759493671,2009.87341772152,2011.13924050633,2012.40506329114,2013.67088607595,2014.93670886076,2016.20253164557,2017.46835443038,2018.73417721519,2020],"y":[9.65319673094494,11.5711395009161,13.2423617947697,14.6131242882951,15.7216089057182,16.6205349473144,17.273925386207,17.6856027498365,17.8916346364817,17.9280886444214,17.7124010512618,16.8365145941601,15.7688531047621,15.012757534044,14.1391255672353,13.3595173453066,12.9413073011761,12.7366649088803,12.61004109177,12.4258982483874,12.0547635978691,11.5401574191348,10.9599242550716,10.3524045094566,9.60435343430441,8.79512870527826,8.05617263471676,7.23754301039556,6.39440519028749,5.59689814648678,4.9151608510872,4.32770340971735,3.77864666092573,3.29696896925138,2.91168412034747,2.65653182453875,2.6335846423164,2.78199631473185,2.9789099793823,3.10146877386503,3.09445151696143,3.20007619814185,3.25901025726178,3.05372799017766,2.630479157363,2.1285761797655,1.52253128610803,0.752218738604877,-0.0980392380563774,-0.943793377756122,-1.70707580278601,-2.47973656916755,-3.28706993761612,-4.08579531015952,-4.83263208882594,-5.48781658546201,-6.05805958054784,-6.57634110065078,-7.07511436995598,-7.58683261264872,-8.22602095074986,-9.05170471207023,-9.76801604396249,-10.2563020447394,-10.8727472148721,-11.0847197431835,-10.9075422860084,-10.5266016170905,-9.97053846554287,-9.26799356047882,-8.43472554640587,-7.41707426382251,-6.2325434127652,-4.91394315325035,-3.49408364529438,-1.98940722100663,-0.374222373152739,1.35420699949428,3.19697845320892,5.15518954426564],"text":["Year: 1920.000<br />var:   9.65319673","Year: 1921.266<br />var:  11.57113950","Year: 1922.532<br />var:  13.24236179","Year: 1923.797<br />var:  14.61312429","Year: 1925.063<br />var:  15.72160891","Year: 1926.329<br />var:  16.62053495","Year: 1927.595<br />var:  17.27392539","Year: 1928.861<br />var:  17.68560275","Year: 1930.127<br />var:  17.89163464","Year: 1931.392<br />var:  17.92808864","Year: 1932.658<br />var:  17.71240105","Year: 1933.924<br />var:  16.83651459","Year: 1935.190<br />var:  15.76885310","Year: 1936.456<br />var:  15.01275753","Year: 1937.722<br />var:  14.13912557","Year: 1938.987<br />var:  13.35951735","Year: 1940.253<br />var:  12.94130730","Year: 1941.519<br />var:  12.73666491","Year: 1942.785<br />var:  12.61004109","Year: 1944.051<br />var:  12.42589825","Year: 1945.316<br />var:  12.05476360","Year: 1946.582<br />var:  11.54015742","Year: 1947.848<br />var:  10.95992426","Year: 1949.114<br />var:  10.35240451","Year: 1950.380<br />var:   9.60435343","Year: 1951.646<br />var:   8.79512871","Year: 1952.911<br />var:   8.05617263","Year: 1954.177<br />var:   7.23754301","Year: 1955.443<br />var:   6.39440519","Year: 1956.709<br />var:   5.59689815","Year: 1957.975<br />var:   4.91516085","Year: 1959.241<br />var:   4.32770341","Year: 1960.506<br />var:   3.77864666","Year: 1961.772<br />var:   3.29696897","Year: 1963.038<br />var:   2.91168412","Year: 1964.304<br />var:   2.65653182","Year: 1965.570<br />var:   2.63358464","Year: 1966.835<br />var:   2.78199631","Year: 1968.101<br />var:   2.97890998","Year: 1969.367<br />var:   3.10146877","Year: 1970.633<br />var:   3.09445152","Year: 1971.899<br />var:   3.20007620","Year: 1973.165<br />var:   3.25901026","Year: 1974.430<br />var:   3.05372799","Year: 1975.696<br />var:   2.63047916","Year: 1976.962<br />var:   2.12857618","Year: 1978.228<br />var:   1.52253129","Year: 1979.494<br />var:   0.75221874","Year: 1980.759<br />var:  -0.09803924","Year: 1982.025<br />var:  -0.94379338","Year: 1983.291<br />var:  -1.70707580","Year: 1984.557<br />var:  -2.47973657","Year: 1985.823<br />var:  -3.28706994","Year: 1987.089<br />var:  -4.08579531","Year: 1988.354<br />var:  -4.83263209","Year: 1989.620<br />var:  -5.48781659","Year: 1990.886<br />var:  -6.05805958","Year: 1992.152<br />var:  -6.57634110","Year: 1993.418<br />var:  -7.07511437","Year: 1994.684<br />var:  -7.58683261","Year: 1995.949<br />var:  -8.22602095","Year: 1997.215<br />var:  -9.05170471","Year: 1998.481<br />var:  -9.76801604","Year: 1999.747<br />var: -10.25630204","Year: 2001.013<br />var: -10.87274721","Year: 2002.278<br />var: -11.08471974","Year: 2003.544<br />var: -10.90754229","Year: 2004.810<br />var: -10.52660162","Year: 2006.076<br />var:  -9.97053847","Year: 2007.342<br />var:  -9.26799356","Year: 2008.608<br />var:  -8.43472555","Year: 2009.873<br />var:  -7.41707426","Year: 2011.139<br />var:  -6.23254341","Year: 2012.405<br />var:  -4.91394315","Year: 2013.671<br />var:  -3.49408365","Year: 2014.937<br />var:  -1.98940722","Year: 2016.203<br />var:  -0.37422237","Year: 2017.468<br />var:   1.35420700","Year: 2018.734<br />var:   3.19697845","Year: 2020.000<br />var:   5.15518954"],"type":"scatter","mode":"lines","name":"fitted values","line":{"width":3.77952755905512,"color":"rgba(0,0,255,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1998,1998],"y":[-19.8897435897436,34.4709401709402],"text":"xintercept: 1998","type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"dash"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":45.7550850975509,"r":7.97011207970112,"b":40.381901203819,"l":43.1714404317144},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"sans","size":15.9402241594022},"title":{"text":"<b> Rotten Tomatotes Critic/Audience Differences <\/b>","font":{"color":"rgba(0,0,0,1)","family":"sans","size":18.5969281859693},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1914.505,2025.495],"tickmode":"array","ticktext":["1920","1930","1940","1950","1960","1970","1980","1990","2000","2010","2020"],"tickvals":[1920,1930,1940,1950,1960,1970,1980,1990,2000,2010,2020],"categoryorder":"array","categoryarray":["1920","1930","1940","1950","1960","1970","1980","1990","2000","2010","2020"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":3.98505603985056,"tickwidth":0.724555643609193,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"sans","size":11.9551681195517},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Year","font":{"color":"rgba(0,0,0,1)","family":"sans","size":13.2835201328352}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-19.8897435897436,34.4709401709402],"tickmode":"array","ticktext":["-10","0","10","20","30"],"tickvals":[-10,0,10,20,30],"categoryorder":"array","categoryarray":["-10","0","10","20","30"],"nticks":null,"ticks":"outside","tickcolor":"rgba(0,0,0,1)","ticklen":3.98505603985056,"tickwidth":0.724555643609193,"showticklabels":true,"tickfont":{"color":"rgba(0,0,0,1)","family":"sans","size":11.9551681195517},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":true,"gridcolor":"rgba(190,190,190,1)","gridwidth":0.724555643609193,"zeroline":false,"anchor":"x","title":{"text":"Expected Critic-Audience Score","font":{"color":"rgba(0,0,0,1)","family":"sans","size":13.2835201328352}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"rgba(0,0,0,1)","borderwidth":2.06156048675734,"font":{"color":"rgba(0,0,0,1)","family":"sans","size":14.6118721461187}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"7bdb79449012":{"x":{},"y":{},"type":"bar"},"7bdb44ecbf1":{"x":{},"y":{}},"7bdb512f3d6c":{"xintercept":{}}},"cur_data":"7bdb79449012","visdat":{"7bdb79449012":["function (y) ","x"],"7bdb44ecbf1":["function (y) ","x"],"7bdb512f3d6c":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="simple-regression-results" class="section level2">
+<h2>Simple Regression Results</h2>
+<p>This last section here attempts to tease out some kind of relationship between RT review scores and box office performance. In particular, I estimate the following model:</p>
+<p><span class="math display">\[
+\begin{aligned}
+G_{i,t}=&amp;\beta_0+\beta_1 Budget_{i,t}+ \beta_2 Academy_{i,t}+\beta_3 Rating_{i,t}\\
++&amp;\theta_t+\gamma_i+\varepsilon_{i,t}
+\end{aligned}
+\]</span>
+where the dependent variable is <span class="math inline">\(G_{i,t}\)</span> is the US box office real gross (mil 2020 USD) for film <span class="math inline">\(i\)</span> made at time <span class="math inline">\(t\)</span>, and independent variables include: <span class="math inline">\(Budget_{i,t}\)</span> is the film’s real (mil 2020 USD) budget, <span class="math inline">\(Academy_{i,t}\)</span> is a dummy variable that codes for whether a film was nominated for an Academy Award, <span class="math inline">\(\theta_t\)</span> and <span class="math inline">\(\gamma_i\)</span> capture time and genre fixed effects, and <span class="math inline">\(Rating_{i,t}\)</span> is the variable of interest. In Model (1), I use Critics’s review scores for <span class="math inline">\(Rating_{i,t},\)</span> whereas I use Audience review scores and (pooled) IMBd scores for <span class="math inline">\(Rating_{i,t}\)</span> in Model (2) and Model (3), respectively.</p>
+<pre><code>## 
+## ===============================================================
+##                        Model 1       Model 2       Model 3     
+## ---------------------------------------------------------------
+## budget_r                  0.886 ***     0.873 ***     0.843 ***
+##                          (0.034)       (0.034)       (0.034)   
+## aca_nomYes               55.855 ***    50.586 ***    54.352 ***
+##                          (6.401)       (6.250)       (6.369)   
+## AllCriticsScore           0.671 ***                            
+##                          (0.054)                               
+## AudienceScore                           1.290 ***              
+##                                        (0.078)                 
+## imdb_score                                           19.786 ***
+##                                                      (1.482)   
+## ---------------------------------------------------------------
+## Num. obs.              2622          2609          2622        
+## R^2 (full model)          0.607         0.624         0.610    
+## R^2 (proj model)          0.311         0.344         0.318    
+## Adj. R^2 (full model)     0.547         0.568         0.552    
+## Adj. R^2 (proj model)     0.208         0.245         0.216    
+## ===============================================================
+## *** p &lt; 0.01, ** p &lt; 0.05, * p &lt; 0.1</code></pre>
+<p>Highlights from the preceding regression table include:</p>
+<ul>
+<li>RT scores are positively correlated with real US box office grosses.</li>
+<li>A one (1) point RT score increase from an Audience review is worth about 1.29 mil 2020 USD compared to 0.671 mil 2020 USD value for an analogous Critic score; thus, <strong>Audience scores are worth about 620k USD more than Critic Scores</strong> (in term of US box office gross).</li>
+<li>Audience score models have slightly higher explanatory power relative to Critic score models.<br />
+</li>
+<li>The IMBd model serves as a nice robustness check for the RT models. Since IMBd scores range from 0-10 and RT scores range from 0-100, a quick conversion of units reveals that a one point increase in IMBd score is associated with a 1.98 mil increase in US box office gross.</li>
+</ul>
+</div>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/2020-12-01-r-rmarkdown/&amp;text=Are%20we%20watching%20the%20same%20movie?%20Diverging%20tastes%20among%20Rotten%20Tomatoes%20reviews" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/2020-12-01-r-rmarkdown/&amp;t=Are%20we%20watching%20the%20same%20movie?%20Diverging%20tastes%20among%20Rotten%20Tomatoes%20reviews" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Are%20we%20watching%20the%20same%20movie?%20Diverging%20tastes%20among%20Rotten%20Tomatoes%20reviews&amp;body=/post/2020-12-01-r-rmarkdown/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/2020-12-01-r-rmarkdown/&amp;title=Are%20we%20watching%20the%20same%20movie?%20Diverging%20tastes%20among%20Rotten%20Tomatoes%20reviews" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Are%20we%20watching%20the%20same%20movie?%20Diverging%20tastes%20among%20Rotten%20Tomatoes%20reviews%20/post/2020-12-01-r-rmarkdown/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/2020-12-01-r-rmarkdown/&amp;title=Are%20we%20watching%20the%20same%20movie?%20Diverging%20tastes%20among%20Rotten%20Tomatoes%20reviews" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="/"><img class="avatar mr-3 avatar-circle" src="/author/david-terner/avatar_hubf044181fef5d9dd0440ffccb00ddef7_2103893_270x270_fill_lanczos_center_2.png" alt="David Terner"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/">David Terner</a></h5>
+      <h6 class="card-subtitle">PhD Candidate</h6>
+      <p class="card-text">My research interests include international trade, maritime freight, and applied microeconmics</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/" >
+        <i class="fas fa-"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/davidmterneriu" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/davidmternergeneseo" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    copyright 2021
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+    Published with
+    <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a>  —
+    the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">
+    open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.8.4/mermaid.min.js" integrity="sha512-as1BF4+iHZ3BVO6LLDQ7zrbvTXM+c/1iZ1qII/c3c4L8Rn5tHLpFUtpaEtBNS92f+xGsCzsD7b62XP3XYap6oA==" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/python.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/latex.min.js"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    <script src="/js/_vendor/bootstrap.bundle.min.f81d0a1705048649befc8b595e455a94.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.e20609e6ad3f7fce339ee2e74f13682b.js"></script>
+
+    
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+
+</body>
+</html>

@@ -16,11 +16,13 @@ options(warn=-1)
 library(texreg)
 ```
 
-# First post thoughts
 
-Throughout the year, I come across interesting datasets that are ripe for story telling but that are without an obvious research dimension/question. This portion of the website is dedicated to sharing the first inklings that come to mind after sorting through and trying to glean a pattern (or two) from the data. 
+
+
 
 # You say tomato, I say tomato?
+
+## How movie rating differences between elite film critcs and average viewers are increasing over time and cutting into studios' bottom line.
 
 [Hillbilly Elegy](https://www.harpercollins.com/products/hillbilly-elegy-j-d-vance?variant=32207704391714) is a highly readable, personal memoir detailing author [J.D. Vance](https://en.wikipedia.org/wiki/J._D._Vance)'s journey from/through a Appalachian (broken) community on to Yale Law School. The book was initially held in wide esteem, particularly among *The Atlantic* devotees, for providing a glimpse into the often inscrutable (to outsiders) class of voters who helped to elect Donald Trump. In response to the book's appeal and commercial success (*New York Times* Best Seller List 2016-2017), director [Ron Howard](https://www.rollingstone.com/movies/movie-news/ron-howard-to-direct-produce-hillbilly-elegy-movie-123741/) partnered with Netflix to adapt J.D.'s story for a full length motion picture. Given the source material, the choice of director, the talents of [Amy Adams](https://en.wikipedia.org/wiki/Amy_Adams) and [Glenn Close ](https://en.wikipedia.org/wiki/Glenn_Close), and a musical score by [Hans Zimmer](https://filmmusicreporter.com/2020/03/10/hans-zimmer-to-reteam-with-ron-howard-on-hillbilly-elegy/), the film appeared poised for future success. 
 
