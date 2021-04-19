@@ -1,14 +1,9 @@
 ---
-abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus
-  ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed
-  ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis
-  sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida
-  egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id
-  dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus.
-  Vestibulum sit amet erat at nulla eleifend gravida.
+abstract: 
+In 2016 the Panama Canal doubled its throughput capacity. Routing choices of East Asian imports to the and within the United States were impacted. I construct a dataset which combines features of international shipping with patterns of U.S. internal trade across several years, varied regions, and multiple products. I quantify and decompose the effects of the Panama Canal Expansion on U.S. East Asian imports using difference-in-difference estimation: total traffic increased by 18% and routes to East Coast ports and through the Panama Canal gained market share at the expense of competing regions and routes. Changes to internal trade are driven by trade-offs between product-specific reductions in per-unit transportation costs and increases in inventory costs. The port of New York accounts for more than 60% of total cost savings post Canal Expansion. Total product transportation cost savings factor out to about 45 billion USD.
 authors:
 - admin
-- Robert Ford
+- David Terner
 date: "2013-07-01T00:00:00Z"
 doi: ""
 featured: true
