@@ -3,7 +3,7 @@ title: "Public University Economics PhD Programs Clustering"
 author: "David Terner"
 date: "10/6/2021"
 output: html_document
-tags: #posts 
+#tags: #posts 
 ---
 
 ```{r setup, include=FALSE}
