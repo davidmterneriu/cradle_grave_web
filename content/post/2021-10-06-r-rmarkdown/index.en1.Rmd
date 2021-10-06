@@ -12,7 +12,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## One of these programs is not like the other?
 
-How similar are economics PhD programs? Which program attribute, or set of attributes, is the most informative to compare one program against another. Common attributes range from difficulty of admission, to quality of initial job market placement, to even the amount and regularity of funding. While comparing two programs on the basis of a single characteristic, say probability of failing preliminary exams, is straightforward enough, any good analysis should reflect all possible program dimensions in a parsimonious way; in other words, we would like to employ a method that reduces the number of dimensions to consider while retaining essential information (e.g. data variation). Moreover, how do we come up with groupings/clusters after we've applied our dimension reduction technique? 
+How similar are economics PhD programs? Which program attribute, or set of attributes, is the most informative to compare one program against another? Common attributes range from difficulty of admission, to quality of initial job market placement, to even the amount and regularity of funding. While comparing two programs on the basis of a single characteristic, say probability of failing preliminary exams, is straightforward enough, any good analysis should reflect all possible program dimensions in a parsimonious way. 
+
+In other words, we would like to employ a method that reduces the number of dimensions to consider while retaining essential information (e.g. data variation). Moreover, how do we come up with groupings/clusters after we've applied our dimension reduction technique? 
 
 
 In this exercise, I collect the following data for U.S. public universities that award Economics PhDs:

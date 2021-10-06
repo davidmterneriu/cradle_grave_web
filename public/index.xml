@@ -469,6 +469,15 @@ Three
 &lt;p class=&#34;caption&#34;&gt;Clustering Chart&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;div id=&#34;what-will-it-take-for-iub-to-join-the-big10-cluster&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What will it take for IUB to join the Big10 (cluster)?&lt;/h2&gt;
+&lt;p&gt;As something of a thought-experiment, I increase IUB’s 16,100 (USD) stipend by increments of 100 (USD) until IUB is identified by the K-means clustering analysis as a &lt;em&gt;Mid-Tier&lt;/em&gt; program. Note that each new/synthetic IUB stipend requires re-running/re-calculating PCA scores.&lt;/p&gt;
+&lt;p&gt;It turns out that if IUB’s stipend were 19,800 (USD), then IUB finally joins the ranks of other Big10 &lt;em&gt;Mid-Tier&lt;/em&gt; programs. To illustrate, consider the animation below which displays the relationship between IUB’s increased stipend and PCA scores and clustering status:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;cluster_animate.gif&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Clustering Animation&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 </description>
     </item>
     
