@@ -121,24 +121,28 @@ where the dependent variable is &lt;span class=&#34;math inline&#34;&gt;\(G_{i,t
 &lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;div id=&#34;r-markdown&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;R Markdown&lt;/h2&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;When you click the &lt;strong&gt;Knit&lt;/strong&gt; button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;one-of-these-programs-is-not-like-the-other&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;One of these programs is not like the other?&lt;/h2&gt;
+&lt;p&gt;How similar are economics PhD programs? Which program attribute, or set of attributes, is the most informative to compare one program against another. Common attributes range from difficulty of admission, to quality of initial job market placement, to even the amount and regularity of funding. While comparing two programs on the basis of a single characteristic, say probability of failing preliminary exams, is straightforward enough, any good analysis should reflect all possible program dimensions in a parsimonious way; in other words, we would like to employ a method that reduces the number of dimensions to consider while retaining essential information (e.g. data variation). Moreover, how do we come up with groupings/clusters after we’ve applied our dimension reduction technique?&lt;/p&gt;
+&lt;p&gt;In this exercise, I collect the following data for U.S. public universities that award Economics PhDs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Program Ratings&lt;/strong&gt;: Sourced from the &lt;a href=&#34;https://www.usnews.com/best-graduate-schools/top-humanities-schools/economics-rankings&#34;&gt;2017 US-News and World Report&lt;/a&gt;peer assessment score for Economics Ph.D. programs. Ratings range from 1 (marginal) to 5 (outstanding). The next release of US-News and World Report ranks is scheduled for 2023.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stipends&lt;/strong&gt;: Sourced directly from program websites, such as &lt;a href=&#34;https://aaec.vt.edu/academics/graduate/funding.html&#34;&gt;Virginia Tech&lt;/a&gt;, or from self-reported sources (&lt;em&gt;read&lt;/em&gt;: current students). Self-reported data come from one of three sources: (i) &lt;a href=&#34;https://www.econjobrumors.com/&#34;&gt;Economics Job Rumors&lt;/a&gt;; (ii) &lt;a href=&#34;https://www.thegradcafe.com/survey/index.php?q=Economics&amp;amp;o=&#34;&gt;The Grad Cafe&lt;/a&gt;; and/or (iii) &lt;a href=&#34;http://www.phdstipends.com/&#34;&gt;PhD Stipends&lt;/a&gt;. I use the most recent year of data across all stipend sources. Particular program stipend estimates and sourcing details are available upon request.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cost of Living (COL)&lt;/strong&gt;: Mapped each program to its respective U.S. city and then matched &lt;a href=&#34;https://www.bestplaces.net/&#34;&gt;Sperling’s&lt;/a&gt; 2020 estimated cost of living index to program location.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Application Volume&lt;/strong&gt;: Sourced from one of three sources: (i) program websites, such as &lt;a href=&#34;https://www.econ.berkeley.edu/grad/admissions/faq#numbapps&#34;&gt;UC Berkeley&lt;/a&gt;; (ii) university system wide admissions data, such as &lt;a href=&#34;https://gradschool.utexas.edu/admissions/where-to-begin/admissions-and-enrollment-statistics&#34;&gt;UT-Austin&lt;/a&gt;; and, (iii) &lt;a href=&#34;https://www.petersons.com/search/grad?q=Economics&#34;&gt;Peterson’s Grad School Search Engine&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Armed with these data
+&lt;span class=&#34;math display&#34;&gt;\[X_i=\{\text{Ratings}_i,\text{Stipend}_i,\text{COL}_i,\text{Applications}_i\}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;for programs &lt;span class=&#34;math inline&#34;&gt;\(i=1,\dots, 50\)&lt;/span&gt;, I: first use &lt;a href=&#34;https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202&#34;&gt;Principal Component Analysis&lt;/a&gt; (PCA hereafter) to reduce the 4D data space (e.g. four predictors) into a 2D PCA-coordinate grid; then, second use &lt;a href=&#34;https://uc-r.github.io/kmeans_clustering#gap&#34;&gt;K-means Cluster Analysis&lt;/a&gt; to optimally group PhD programs. After estimating a so called &lt;a href=&#34;http://web.stanford.edu/~hastie/Papers/gap.pdf&#34;&gt;Gap Statistic&lt;/a&gt;, I find that the optimal number of clusters is three, i.e. &lt;span class=&#34;math inline&#34;&gt;\(K=3.\)&lt;/span&gt; These 3 clusters roughly correspond to program ranking and prestige; denote Cluster 1 as &lt;em&gt;Top-Tier&lt;/em&gt; programs (e.g. UC Berkeley is in this cluster), Cluster 2 as &lt;em&gt;Mid-Tier&lt;/em&gt; programs (e.g. the University of Pittsburgh is in this cluster), and Cluster 3 as &lt;em&gt;Low-Tier&lt;/em&gt; programs (e.g. University of Wyoming is in this cluster).&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;including-plots&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Including Plots&lt;/h2&gt;
-&lt;p&gt;You can also embed plots, for example:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2021-10-06-r-rmarkdown/index.en1_files/figure-html/pressure-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Note that the &lt;code&gt;echo = FALSE&lt;/code&gt; parameter was added to the code chunk to prevent printing of the R code that generated the plot.&lt;/p&gt;
+&lt;div id=&#34;indiana-university-bloomingtion-iub-a-low-tier-program&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Indiana University Bloomingtion (IUB): A Low-Tier Program&lt;/h2&gt;
+&lt;p&gt;IUB is ranked within the top-third of all public university economics PhDs on the basis of its rating (e.g. 3.2). However, as of 2020, IUB’s stipend of 16,100 (USD) placed it in the &lt;strong&gt;bottom 87%&lt;/strong&gt; of all public programs. Even with a cost of living adjustment, IUB’s stipend still falls within the &lt;strong&gt;lower half&lt;/strong&gt; of all public programs. In a related fashion, IUB’s latest application volume of roughly 135 applicants also placed it within the &lt;strong&gt;lower half&lt;/strong&gt; of all public programs.&lt;/p&gt;
+&lt;p&gt;All of this to say, notwithstanding IUB’s respectable program rating, a meager stipend and middling application volume help to land IUB squarely within the &lt;em&gt;Low-Tier&lt;/em&gt; program-cluster. Notice that IUB and Iowa are the only Big10 programs located in the &lt;em&gt;Low-Tier&lt;/em&gt; program cluster (all Big10 programs are labeled). Belonging to the &lt;em&gt;Low-Tier&lt;/em&gt; program-cluster means that IUB has more in common (on the basis of this analysis) with the University of Alabama (rating 2.0) than it is to Purdue (rating 3.1 and Purdue is the &lt;em&gt;Mid-Tier&lt;/em&gt; program-cluster.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;cluster_labeled.png&#34; alt=&#34;&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Clustering Chart&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>

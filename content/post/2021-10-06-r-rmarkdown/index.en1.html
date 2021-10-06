@@ -9,22 +9,35 @@ output: html_document
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre class="r"><code>summary(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+<div id="one-of-these-programs-is-not-like-the-other" class="section level2">
+<h2>One of these programs is not like the other?</h2>
+<p>How similar are economics PhD programs? Which program attribute, or set of attributes, is the most informative to compare one program against another. Common attributes range from difficulty of admission, to quality of initial job market placement, to even the amount and regularity of funding. While comparing two programs on the basis of a single characteristic, say probability of failing preliminary exams, is straightforward enough, any good analysis should reflect all possible program dimensions in a parsimonious way; in other words, we would like to employ a method that reduces the number of dimensions to consider while retaining essential information (e.g. data variation). Moreover, how do we come up with groupings/clusters after we’ve applied our dimension reduction technique?</p>
+<p>In this exercise, I collect the following data for U.S. public universities that award Economics PhDs:</p>
+<ul>
+<li><strong>Program Ratings</strong>: Sourced from the <a href="https://www.usnews.com/best-graduate-schools/top-humanities-schools/economics-rankings">2017 US-News and World Report</a>peer assessment score for Economics Ph.D. programs. Ratings range from 1 (marginal) to 5 (outstanding). The next release of US-News and World Report ranks is scheduled for 2023.</li>
+<li><strong>Stipends</strong>: Sourced directly from program websites, such as <a href="https://aaec.vt.edu/academics/graduate/funding.html">Virginia Tech</a>, or from self-reported sources (<em>read</em>: current students). Self-reported data come from one of three sources: (i) <a href="https://www.econjobrumors.com/">Economics Job Rumors</a>; (ii) <a href="https://www.thegradcafe.com/survey/index.php?q=Economics&amp;o=">The Grad Cafe</a>; and/or (iii) <a href="http://www.phdstipends.com/">PhD Stipends</a>. I use the most recent year of data across all stipend sources. Particular program stipend estimates and sourcing details are available upon request.</li>
+<li><strong>Cost of Living (COL)</strong>: Mapped each program to its respective U.S. city and then matched <a href="https://www.bestplaces.net/">Sperling’s</a> 2020 estimated cost of living index to program location.</li>
+<li><strong>Application Volume</strong>: Sourced from one of three sources: (i) program websites, such as <a href="https://www.econ.berkeley.edu/grad/admissions/faq#numbapps">UC Berkeley</a>; (ii) university system wide admissions data, such as <a href="https://gradschool.utexas.edu/admissions/where-to-begin/admissions-and-enrollment-statistics">UT-Austin</a>; and, (iii) <a href="https://www.petersons.com/search/grad?q=Economics">Peterson’s Grad School Search Engine</a>.</li>
+</ul>
+<p>Armed with these data
+<span class="math display">\[X_i=\{\text{Ratings}_i,\text{Stipend}_i,\text{COL}_i,\text{Applications}_i\}\]</span></p>
+<p>for programs <span class="math inline">\(i=1,\dots, 50\)</span>, I: first use <a href="https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202">Principal Component Analysis</a> (PCA hereafter) to reduce the 4D data space (e.g. four predictors) into a 2D PCA-coordinate grid; then, second use <a href="https://uc-r.github.io/kmeans_clustering#gap">K-means Cluster Analysis</a> to optimally group PhD programs. After estimating a so called <a href="http://web.stanford.edu/~hastie/Papers/gap.pdf">Gap Statistic</a>, I find that the optimal number of clusters is three, i.e. <span class="math inline">\(K=3.\)</span> These 3 clusters roughly correspond to program ranking and prestige; denote Cluster 1 as <em>Top-Tier</em> programs (e.g. UC Berkeley is in this cluster), Cluster 2 as <em>Mid-Tier</em> programs (e.g. the University of Pittsburgh is in this cluster), and Cluster 3 as <em>Low-Tier</em> programs (e.g. University of Wyoming is in this cluster).</p>
 </div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<p><img src="/post/2021-10-06-r-rmarkdown/index.en1_files/figure-html/pressure-1.png" width="672" /></p>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<div id="indiana-university-bloomingtion-iub-a-low-tier-program" class="section level2">
+<h2>Indiana University Bloomingtion (IUB): A Low-Tier Program</h2>
+<p>IUB is ranked within the top-third of all public university economics PhDs on the basis of its rating (e.g. 3.2). However, as of 2020, IUB’s stipend of 16,100 (USD) placed it in the <strong>bottom 87%</strong> of all public programs. Even with a cost of living adjustment, IUB’s stipend still falls within the <strong>lower half</strong> of all public programs. In a related fashion, IUB’s latest application volume of roughly 135 applicants also placed it within the <strong>lower half</strong> of all public programs.</p>
+<p>All of this to say, notwithstanding IUB’s respectable program rating, a meager stipend and middling application volume help to land IUB squarely within the <em>Low-Tier</em> program-cluster. Notice that IUB and Iowa are the only Big10 programs located in the <em>Low-Tier</em> program cluster (all Big10 programs are labeled). Belonging to the <em>Low-Tier</em> program-cluster means that IUB has more in common (on the basis of this analysis) with the University of Alabama (rating 2.0) than it is to Purdue (rating 3.1 and Purdue is the <em>Mid-Tier</em> program-cluster.</p>
+<div class="figure">
+<img src="cluster_labeled.png" alt="" />
+<p class="caption">Clustering Chart</p>
+</div>
+</div>
+<div id="what-will-it-take-for-iub-to-join-the-big10-cluster" class="section level2">
+<h2>What will it take for IUB to join the Big10 (cluster)?</h2>
+<p>As something of a thought-experiment, I increase IUB’s 16,100 (USD) stipend by increments of 100 (USD) until IUB is identified by the K-means clustering analysis as a <em>Mid-Tier</em> program. Note that each new/synthetic IUB stipend requires re-running/re-calculating PCA scores.</p>
+<p>It turns out that if IUB’s stipend were 19,800 (USD), then IUB finally joins the ranks of other Big10 <em>Mid-Tier</em> programs. To illustrate, consider the animation below which displays the relationship between IUB’s increased stipend and PCA scores and clustering status:</p>
+<div class="figure">
+<img src="cluster_animate.gif" alt="" />
+<p class="caption">Clustering Animation</p>
+</div>
 </div>
