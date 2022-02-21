@@ -1,10 +1,10 @@
 ---
-bio: My research interests include international trade, maritime freight, and applied microeconmics
+bio: My research interests include international trade, maritime freight, applied microeconomics, and network economics. 
 education:
   courses:
-  - course: PhD in Economics
+  - course: PhD in Economics and Complex Systems/Network Science
     institution: Indiana University
-    year: 2022 (Expected)
+    year: 2023 (Expected)
   - course: MA in Economics
     institution: Indiana University
     year: 2018
@@ -42,5 +42,7 @@ title: David Terner
 ---
 
 Economics PhD candidate at Indiana University. Research focus on international trade, transport economics, and applied microeconomics. World Bank and private sector shipping consultancy experience.  National Science Foundation (NSF) Complex Networks and Systems Affiliate. 
+
+![Oil Shock Pass Through on Containerized Freigh Rates](static/media/pass_thru_video.gif)
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/Terner_Resume_09_30_20.pdf" "newtab" >}}CV{{< /staticref >}}.
